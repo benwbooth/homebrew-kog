@@ -20,7 +20,11 @@ Anyway**. [Apple's instructions](https://support.apple.com/en-us/102445)
 ```sh
 brew update
 brew upgrade --cask benwbooth/kog/kog
-# To remove the app:
+```
+
+To remove the app:
+
+```sh
 brew uninstall --cask benwbooth/kog/kog
 ```
 
