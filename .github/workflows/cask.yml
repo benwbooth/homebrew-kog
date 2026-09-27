@@ -24,5 +24,8 @@ jobs:
           brew tap benwbooth/kog "$GITHUB_WORKSPACE"
           brew install --cask benwbooth/kog/kog
           test -x /Applications/Kog.app/Contents/MacOS/kog
-          /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' /Applications/Kog.app/Contents/Info.plist
+          expected="$(sed -n 's/^  version "\([^"]*\)"/\1/p' Casks/kog.rb)"
+          actual="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' /Applications/Kog.app/Contents/Info.plist)"
+          test "$actual" = "$expected"
+          echo "Installed Kog $actual"
           brew uninstall --cask benwbooth/kog/kog
