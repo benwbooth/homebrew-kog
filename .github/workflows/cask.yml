@@ -23,6 +23,6 @@ jobs:
           ruby -c Casks/kog.rb
           brew tap benwbooth/kog "$GITHUB_WORKSPACE"
           brew install --cask benwbooth/kog/kog
-          test -x /Applications/Kog.app/Contents/MacOS/Kog
+          test -x /Applications/Kog.app/Contents/MacOS/kog
           /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' /Applications/Kog.app/Contents/Info.plist
           brew uninstall --cask benwbooth/kog/kog
