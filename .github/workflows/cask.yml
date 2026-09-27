@@ -1,0 +1,28 @@
+name: Verify Homebrew cask
+
+on:
+  push:
+    paths: [Casks/**, .github/workflows/cask.yml]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v6
+      - name: Verify and install release
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: '1'
+        run: |
+          # The first commit establishes the tap before the publisher adds it.
+          if [ ! -f Casks/kog.rb ]; then exit 0; fi
+          ruby -c Casks/kog.rb
+          brew tap benwbooth/kog "$GITHUB_WORKSPACE"
+          brew install --cask benwbooth/kog/kog
+          test -x /Applications/Kog.app/Contents/MacOS/Kog
+          /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' /Applications/Kog.app/Contents/Info.plist
+          brew uninstall --cask benwbooth/kog/kog
