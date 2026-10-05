@@ -1,8 +1,8 @@
 cask "kog" do
-  version "0.9.42"
+  version "0.10.0"
 
-  sha256 "916bce830ff7749d36b60ac0facd28bf08d57def79306229ca7fee7a26a591da"
-  url "https://github.com/benwbooth/Kog/releases/download/v0.9.42/Kog-#{version}-macos-arm64.dmg"
+  sha256 "20542ff1a3fa557c9577be9ad0ec8b26bcbbed4f5d38b6d52534976217a3eac0"
+  url "https://github.com/benwbooth/Kog/releases/download/v0.10.0/Kog-#{version}-macos-arm64.dmg"
 
   name "Kog"
   desc "Format-comprehensive local music player"
